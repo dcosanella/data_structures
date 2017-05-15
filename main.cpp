@@ -26,6 +26,10 @@ int main()
     list.push_front(10);
     list.display_list();
     cout << "Size: " << list.size() << endl;
+	cout << endl;
+	list.reverse();
+	list.display_list();
+	cout << "Size: " << list.size() << endl;
     cout << endl;
     list.insert_node(17, 3);
     list.display_list();
@@ -46,5 +50,9 @@ int main()
     list.pop_back();
     list.display_list();
     cout << "Size: " << list.size() << endl;
+	cout << endl;
+	list.reverse();
+	list.display_list();
+	cout << "Size: " << list.size() << endl;
     return 0;
 }

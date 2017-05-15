@@ -18,6 +18,8 @@ public:
     void pop_back(void);						// remove node from back of list
     void display_list(void);					// display list
     int size(void);								// calculate the size of list
+	bool empty(void);							// find out if list is empty
+	void reverse(void);							// reverse list
 
 
 private:
@@ -39,6 +41,7 @@ List<T>::List()
 template <class T>
 void List<T>::push_front(const T& data)
 {
+	cout << "push_front" << endl;
     Node *newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
@@ -62,6 +65,7 @@ void List<T>::push_front(const T& data)
 template <class T>
 void List<T>::push_back(const T& data)
 {
+	cout << "push_back" << endl;
     Node *newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
@@ -86,6 +90,7 @@ void List<T>::push_back(const T& data)
 template <class T>
 void List<T>::insert_node(const T& data, int pos)
 {
+	cout << "insert_node" << endl;
     Node *newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
@@ -117,6 +122,7 @@ void List<T>::insert_node(const T& data, int pos)
 template <class T>
 void List<T>::delete_node(int pos)
 {
+	cout << "delete_node" << endl;
     Node *nodePtr;
     Node *prevNode;
     int p = 0;
@@ -150,6 +156,7 @@ void List<T>::delete_node(int pos)
 template <class T>
 void List<T>::pop_front(void)
 {
+	cout << "pop_front" << endl;
     if (m_head == nullptr)
     {
         return;
@@ -164,6 +171,7 @@ void List<T>::pop_front(void)
 template <class T>
 void List<T>::pop_back(void)
 {
+	cout << "pop_back" << endl;
     Node *nodePtr;
     Node *prevNode;
 
@@ -220,6 +228,50 @@ int List<T>::size(void)
         }
     }
     return size;
+}
+
+template <class T>
+bool List<T>::empty(void)
+{
+	cout << "empty" << endl;
+	if (m_head == nullptr)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+template <class T>
+void List<T>::reverse(void)
+{
+	cout << "reverse" << endl;
+	Node *nodePtr;
+	Node *nextNode;
+	Node *prevNode;
+
+	if (m_head == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		nodePtr = m_head;
+		prevNode = nullptr;
+		while (nodePtr != nullptr)
+		{
+			nodePtr->prev = nodePtr->next;
+			nextNode = nodePtr->next;	// set nextNode pointer to the next node
+			nodePtr->next = prevNode;	// set next pointer to the previous node (step 1 of reversal)
+			prevNode = nodePtr;			// set the previous node to the current node (step 2 of reversal)
+			nodePtr = nextNode;			// set current node to the next node
+		}
+		prevNode->prev = nullptr;
+		m_head = prevNode;
+	}
+
 }
 
 
