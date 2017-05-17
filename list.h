@@ -20,6 +20,7 @@ public:
     int size(void);								// calculate the size of list
 	bool empty(void);							// find out if list is empty
 	void reverse(void);							// reverse list
+	void sort(void);							// sort list in ascending order (selection sort)
 
 
 private:
@@ -272,6 +273,35 @@ void List<T>::reverse(void)
 		m_head = prevNode;
 	}
 
+}
+
+template <class T>
+void List<T>::sort(void)
+{
+	cout << "sort" << endl;
+	Node *nodePtr;
+	Node *nextNode;
+	Node *currNode;
+
+	if (m_head == nullptr)
+	{
+		return;
+	}
+	else
+	{
+		for(nodePtr = m_head; nodePtr->next != nullptr; nodePtr = nodePtr->next)
+		{
+			for (nextNode = nodePtr->next; nextNode != nullptr; nextNode = nextNode->next)
+			{
+				if (nodePtr->data > nextNode->data)
+				{
+					T tempData = nodePtr->data;
+					nodePtr->data = nextNode->data;
+					nextNode->data = tempData;
+				}
+			}
+		}
+	}
 }
 
 

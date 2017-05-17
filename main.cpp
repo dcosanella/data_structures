@@ -23,6 +23,10 @@ int main()
     list.display_list();
     cout << "Size: " << list.size() << endl;
     cout << endl;
+	list.sort();
+	list.display_list();
+	cout << "Size: " << list.size() << endl;
+	cout << endl;
     list.push_front(10);
     list.display_list();
     cout << "Size: " << list.size() << endl;
@@ -34,6 +38,10 @@ int main()
     list.insert_node(17, 3);
     list.display_list();
     cout << "Size: " << list.size() << endl;
+	cout << endl;
+	list.sort();
+	list.display_list();
+	cout << "Size: " << list.size() << endl;
     cout << endl;
     list.delete_node(4);
     list.display_list();
