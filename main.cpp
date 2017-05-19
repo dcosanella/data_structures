@@ -2,6 +2,7 @@
 //
 
 #include "list.h"
+#include "vector.h"
 #include <iostream>
 
 using namespace std;
@@ -9,6 +10,7 @@ using namespace std;
 int main()
 {
     // Tests for all functions in List class
+	/*
     List<int> list;
     list.push_front(2);
     list.push_front(5);
@@ -63,4 +65,9 @@ int main()
 	list.display_list();
 	cout << "Size: " << list.size() << endl;
     return 0;
+	*/
+
+	Vector<int> vector(3, 10);
+	vector.display();
+	cout << endl;
 }

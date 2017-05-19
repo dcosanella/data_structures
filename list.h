@@ -9,15 +9,15 @@ template <class T>
 class List
 {
 public:
-    List();										// constructor
-    void push_front(const T& data);				// add node to end of list
-    void push_back(const T& data);				// add node to end of list
-    void insert_node(const T& data, int pos);	// insert node at certain position
-    void delete_node(int pos);					// delete node at certain position
-    void pop_front(void);						// remove node from front of list
-    void pop_back(void);						// remove node from back of list
-    void display_list(void);					// display list
-    int size(void);								// calculate the size of list
+	List();										// constructor
+	void push_front(const T& data);				// add node to end of list
+	void push_back(const T& data);				// add node to end of list
+	void insert_node(const T& data, int pos);	// insert node at certain position
+	void delete_node(int pos);					// delete node at certain position
+	void pop_front(void);						// remove node from front of list
+	void pop_back(void);						// remove node from back of list
+	void display_list(void);					// display list
+	int size(void);								// calculate the size of list
 	bool empty(void);							// find out if list is empty
 	void reverse(void);							// reverse list
 	void sort(void);							// sort list in ascending order (selection sort)
