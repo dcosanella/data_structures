@@ -70,4 +70,25 @@ int main()
 	Vector<int> vector(3, 10);
 	vector.display();
 	cout << endl;
+
+	Vector<int> v(2);
+	v.push_back(3);
+	v.display();
+	cout << endl;
+
+	v.push_back(2);
+	v.display();
+	cout << endl;
+
+	v.push_back(1);
+	v.display();
+	cout << endl;
+
+	v.push_back(4);
+	v.display();
+	cout << endl;
+
+	v.pop_back();
+	v.display();
+	cout << endl;
 }
