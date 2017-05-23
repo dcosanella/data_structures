@@ -14,13 +14,14 @@ class Vector
 		Vector(unsigned int size, const T& data);	// creates vector with specific size and fills it with data.
 		void push_back(const T& data);				// inserts data at end of vector
 		void pop_back(void);						// deletes last element of vector
-
+		void reserve(int size);						// allocate more memory for vector
+		int size(void);								// return size of vector
 		void display(void);							// display vector
 
 	private:
 		unsigned int m_size;			// number of elements in vector
 		unsigned int m_capacity;		// max size of vector
-		T *m_vector;					// pointer to first element in array
+		T* m_vector;					// pointer to first element in array
 };
 
 template <class T>
@@ -60,23 +61,11 @@ template <class T>
 void Vector<T>::push_back(const T& data)
 {
 	cout << "push_back" << endl;
-	int i = 0;
-	while (m_vector[i] != NULL && i < m_capacity)
+	if (m_size == m_capacity)
 	{
-		i++;
+		reserve(m_capacity * 2);				// double the capacity of vector if vector is full
 	}
-	if (i == m_capacity)
-	{
-		T *temp = new T[m_capacity++];			// create new pointer to new array
-		for (int j = 0; j < m_capacity; j++)
-		{
-			temp[j] = m_vector[j];				// copy vector elements to temp
-		}
-		m_vector = temp;						// set vector equal to temp
-		temp = nullptr;							// set temp to nullptr and delete pointer
-		delete temp;
-	}
-	m_vector[i] = data;
+	m_vector[m_size] = data;
 	m_size++;
 }
 
@@ -84,8 +73,37 @@ template <class T>
 void Vector<T>::pop_back(void)
 {
 	cout << "pop_back" << endl;
-	m_vector[m_size--] = NULL;
-	m_capacity--;
+	if (m_size > 0)
+	{
+		m_size--;
+	}
+}
+
+template <class T>
+void Vector<T>::reserve(int size)
+{
+	T* new_vector;
+	new_vector = new T[size];				// create a temporary vector
+
+	if (new_vector != NULL)
+	{
+		for (int i = 0; i < m_size; i++)
+		{
+			new_vector[i] = m_vector[i];	// copy data from original vector to new vector
+		}
+	}
+	if (m_vector != NULL)
+	{
+		delete[] m_vector;					// delete original array if not empty
+	}
+	m_vector = new_vector;					// set original vector to temporary vector
+	m_capacity = size;						// update capacity
+}
+
+template <class T>
+int Vector<T>::size(void)
+{
+	return m_size;
 }
 
 template <class T>

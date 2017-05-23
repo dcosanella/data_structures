@@ -27,10 +27,10 @@ private:
     struct Node
     {
         T data;
-        Node *next;
-        Node *prev;
+        Node* next;
+        Node* prev;
     };
-    Node *m_head;
+    Node* m_head;
 };
 
 template <class T>
@@ -43,11 +43,11 @@ template <class T>
 void List<T>::push_front(const T& data)
 {
 	cout << "push_front" << endl;
-    Node *newNode = new Node;
+    Node* newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
 
-    Node *nodePtr;
+    Node* nodePtr;
 
     if (m_head == nullptr)
     {
@@ -67,11 +67,11 @@ template <class T>
 void List<T>::push_back(const T& data)
 {
 	cout << "push_back" << endl;
-    Node *newNode = new Node;
+    Node* newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
 
-    Node *nodePtr;
+    Node* nodePtr;
 
     if (m_head == nullptr)
     {
@@ -92,12 +92,12 @@ template <class T>
 void List<T>::insert_node(const T& data, int pos)
 {
 	cout << "insert_node" << endl;
-    Node *newNode = new Node;
+    Node* newNode = new Node;
     newNode->data = data;
     newNode->next = nullptr;
 
-    Node *nodePtr;
-    Node *prevNode;
+    Node* nodePtr;
+    Node* prevNode;
     int p = 0;
 
     if (m_head == nullptr)
@@ -124,8 +124,8 @@ template <class T>
 void List<T>::delete_node(int pos)
 {
 	cout << "delete_node" << endl;
-    Node *nodePtr;
-    Node *prevNode;
+    Node* nodePtr;
+    Node* prevNode;
     int p = 0;
 
     if (m_head == nullptr)
@@ -135,7 +135,7 @@ void List<T>::delete_node(int pos)
 
     if (pos == 0)
     {
-        Node *temp = m_head;
+        Node* temp = m_head;
         m_head = m_head->next;
         delete temp;
     }
@@ -164,7 +164,7 @@ void List<T>::pop_front(void)
     }
     else
     {
-        Node *temp = m_head;
+        Node* temp = m_head;
         m_head = m_head->next;
         delete temp;
     }
@@ -173,8 +173,8 @@ template <class T>
 void List<T>::pop_back(void)
 {
 	cout << "pop_back" << endl;
-    Node *nodePtr;
-    Node *prevNode;
+    Node* nodePtr;
+    Node* prevNode;
 
     if (m_head == nullptr)
     {
@@ -196,7 +196,7 @@ void List<T>::pop_back(void)
 template <class T>
 void List<T>::display_list(void)
 {
-    Node *nodePtr;
+    Node* nodePtr;
     if (m_head == nullptr)
     {
         return;
@@ -216,7 +216,7 @@ void List<T>::display_list(void)
 template <class T>
 int List<T>::size(void)
 {
-    Node *nodePtr;
+    Node* nodePtr;
     int size = 0;
 
     if (m_head != nullptr)
@@ -249,9 +249,9 @@ template <class T>
 void List<T>::reverse(void)
 {
 	cout << "reverse" << endl;
-	Node *nodePtr;
-	Node *nextNode;
-	Node *prevNode;
+	Node* nodePtr;
+	Node* nextNode;
+	Node* prevNode;
 
 	if (m_head == nullptr)
 	{
@@ -279,9 +279,9 @@ template <class T>
 void List<T>::sort(void)
 {
 	cout << "sort" << endl;
-	Node *nodePtr;
-	Node *nextNode;
-	Node *currNode;
+	Node* nodePtr;
+	Node* nextNode;
+	Node* currNode;
 
 	if (m_head == nullptr)
 	{
