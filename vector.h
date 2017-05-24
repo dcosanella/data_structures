@@ -16,6 +16,9 @@ class Vector
 		void pop_back(void);						// deletes last element of vector
 		void reserve(int size);						// allocate more memory for vector
 		int size(void);								// return size of vector
+		const T& front(void);						// return first element of vector
+		const T& back(void);						// return last element of vector
+		void insert(unsigned int pos, const T& data);		// insert data before position in vector
 		void display(void);							// display vector
 
 	private:
@@ -38,6 +41,7 @@ Vector<T>::Vector(unsigned int size)
 	m_size = 0;
 	m_capacity = size;
 	m_vector = new T[size];
+
 	for (int i = 0; i < size; i++)
 	{
 		m_vector[i] = NULL;
@@ -65,6 +69,7 @@ void Vector<T>::push_back(const T& data)
 	{
 		reserve(m_capacity * 2);				// double the capacity of vector if vector is full
 	}
+
 	m_vector[m_size] = data;
 	m_size++;
 }
@@ -92,18 +97,77 @@ void Vector<T>::reserve(int size)
 			new_vector[i] = m_vector[i];	// copy data from original vector to new vector
 		}
 	}
+	
 	if (m_vector != NULL)
 	{
 		delete[] m_vector;					// delete original array if not empty
 	}
+	
 	m_vector = new_vector;					// set original vector to temporary vector
 	m_capacity = size;						// update capacity
+
+	new_vector = nullptr;
+	delete[] new_vector;
 }
 
 template <class T>
 int Vector<T>::size(void)
 {
 	return m_size;
+}
+
+template <class T>
+const T& Vector<T>::front(void)
+{
+	return m_vector[0];
+}
+
+template <class T>
+const T& Vector<T>::back(void)
+{
+	int size = m_size - 1;					// create temporary size variable to store size of vector
+	return m_vector[size];
+}
+
+template <class T>
+void Vector<T>::insert(unsigned int pos, const T& data)
+{
+	cout << "insert" << endl;
+	T* temp_vector;
+	temp_vector = new T[m_size];
+
+	if (pos > m_size)
+	{
+		push_back(data);
+		return;
+	}
+
+	for (int i = 0; i < m_size; i++)
+	{
+		if (i < pos - 1)
+		{
+			temp_vector[i] = m_vector[i];
+		}
+		else if (i == pos - 1)
+		{
+			temp_vector[i] = data;
+			m_size++;
+		}
+		else if (i > pos - 1)
+		{
+			temp_vector[i] = m_vector[i - 1];
+		}
+	}
+
+	if (m_vector != NULL)
+	{
+		m_vector = nullptr;
+		delete[] m_vector;					// delete original array if not empty
+	}
+
+	m_vector = temp_vector;
+	temp_vector = nullptr;
+	delete[] temp_vector;
 }
 
 template <class T>

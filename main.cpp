@@ -64,9 +64,9 @@ int main()
 	list.reverse();
 	list.display_list();
 	cout << "Size: " << list.size() << endl;
-    return 0;
 	*/
 
+	// Tests for all functions in Vector class
 	Vector<int> vector(3, 10);
 	vector.display();
 	cout << endl;
@@ -90,23 +90,73 @@ int main()
 	v.display();
 	cout << endl;
 	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
 	cout << endl;
 
 	v.push_back(4);
 	v.display();
 	cout << endl;
 	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	v.insert(3, 10);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	v.insert(2, 20);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	v.insert(10, 80);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	v.insert(5, 25);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
 	cout << endl;
 
 	v.pop_back();
 	v.display();
 	cout << endl;
 	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
 	cout << endl;
 
 	v.pop_back();
 	v.display();
 	cout << endl;
 	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
 	cout << endl;
+
+	v.insert(1, 15);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	return 0;
 }
