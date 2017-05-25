@@ -2,6 +2,7 @@
 #define VECTOR_H
 
 #include <iostream>
+#include <cassert>
 
 using namespace std;
 
@@ -19,6 +20,9 @@ class Vector
 		const T& front(void);						// return first element of vector
 		const T& back(void);						// return last element of vector
 		void insert(unsigned int pos, const T& data);		// insert data before position in vector
+		void erase(unsigned int pos);				// erase data at given index
+		void erase(unsigned int begin, unsigned int end);	// erase data within range of indexes
+		T& operator[](unsigned int i);				// return data at specified index
 		void display(void);							// display vector
 
 	private:
@@ -133,41 +137,86 @@ template <class T>
 void Vector<T>::insert(unsigned int pos, const T& data)
 {
 	cout << "insert" << endl;
-	T* temp_vector;
-	temp_vector = new T[m_size];
-
-	if (pos > m_size)
+	if (pos > 0)
 	{
-		push_back(data);
-		return;
-	}
+		T* temp_vector;
+		temp_vector = new T[m_size];
 
-	for (int i = 0; i < m_size; i++)
+		if (pos > m_size)
+		{
+			push_back(data);
+			return;
+		}
+
+		for (int i = 0; i < m_size; i++)
+		{
+			if (i < pos - 1)
+			{
+				temp_vector[i] = m_vector[i];
+			}
+			else if (i == pos - 1)
+			{
+				temp_vector[i] = data;
+				m_size++;
+			}
+			else if (i > pos - 1)
+			{
+				temp_vector[i] = m_vector[i - 1];
+			}
+		}
+
+		if (m_vector != NULL)
+		{
+			m_vector = nullptr;
+			delete[] m_vector;					// delete original array if not empty
+		}
+
+		m_vector = temp_vector;
+		temp_vector = nullptr;
+		delete[] temp_vector;
+	}
+}
+
+template <class T>
+void Vector<T>::erase(unsigned int pos)
+{
+	cout << "erase(pos)" << endl;
+	if (pos < m_size)
 	{
-		if (i < pos - 1)
+		for (int i = pos - 1; i < m_size; i++)
 		{
-			temp_vector[i] = m_vector[i];
+			m_vector[i] = m_vector[i + 1];
 		}
-		else if (i == pos - 1)
-		{
-			temp_vector[i] = data;
-			m_size++;
-		}
-		else if (i > pos - 1)
-		{
-			temp_vector[i] = m_vector[i - 1];
-		}
+		m_size--;
 	}
-
-	if (m_vector != NULL)
+	else
 	{
-		m_vector = nullptr;
-		delete[] m_vector;					// delete original array if not empty
+		pop_back();
 	}
+}
 
-	m_vector = temp_vector;
-	temp_vector = nullptr;
-	delete[] temp_vector;
+template <class T>
+void Vector<T>::erase(unsigned int begin, unsigned int end)
+{
+	cout << "erase(begin, end)" << endl;
+	if (end > begin && end < m_size && begin > 0)
+	{
+		int j = end - 1;
+
+		for (int i = begin - 1; i < m_size; i++)
+		{
+			m_vector[i] = m_vector[j + 1];
+			j++;
+		}
+		m_size = m_size - ((end - begin) + 1);
+	}
+}
+
+template <class T>
+T& Vector<T>::operator[](unsigned int i)
+{
+	assert(i >= 0 && i < m_size);
+	return m_vector[i];
 }
 
 template <class T>

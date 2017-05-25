@@ -110,6 +110,14 @@ int main()
 	cout << "Back: " << v.back() << endl;
 	cout << endl;
 
+	v.erase(3);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
 	v.insert(2, 20);
 	v.display();
 	cout << endl;
@@ -119,6 +127,14 @@ int main()
 	cout << endl;
 
 	v.insert(10, 80);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	v.erase(10);
 	v.display();
 	cout << endl;
 	cout << "Size: " << v.size() << endl;
@@ -151,6 +167,14 @@ int main()
 	cout << endl;
 
 	v.insert(1, 15);
+	v.display();
+	cout << endl;
+	cout << "Size: " << v.size() << endl;
+	cout << "Front: " << v.front() << endl;
+	cout << "Back: " << v.back() << endl;
+	cout << endl;
+
+	v.erase(2, 4);
 	v.display();
 	cout << endl;
 	cout << "Size: " << v.size() << endl;
