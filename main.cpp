@@ -3,6 +3,7 @@
 
 #include "list.h"
 #include "vector.h"
+#include "stack.h"
 #include <iostream>
 
 using namespace std;
@@ -66,6 +67,7 @@ int main()
 	cout << "Size: " << list.size() << endl;
 	*/
 
+	/*
 	// Tests for all functions in Vector class
 	Vector<int> vector(3, 10);
 	vector.display();
@@ -180,6 +182,52 @@ int main()
 	cout << "Size: " << v.size() << endl;
 	cout << "Front: " << v.front() << endl;
 	cout << "Back: " << v.back() << endl;
+	cout << endl;
+	*/
+
+	// Tests for all functions in Stack class
+	Stack<int> s;
+	s.push(15);
+	s.push(20);
+	s.push(30);
+	s.push(23);
+	s.push(17);
+	cout << "Contents in Stack s:" << endl;
+	s.display();
+	cout << "Top: " << s.top() << endl;
+	cout << "Size: " << s.size() << endl;
+	cout << endl;
+
+	s.pop();
+	cout << "Contents in Stack s:" << endl;
+	s.display();
+	cout << "Top: " << s.top() << endl;
+	cout << "Size: " << s.size() << endl;
+	cout << endl;
+
+	Stack<int> s2;
+	s2.push(2);
+	s2.push(4);
+	s2.push(8);
+
+	cout << "Contents in Stack s2:" << endl;
+	s2.display();
+	cout << "Top: " << s2.top() << endl;
+	cout << "Size: " << s2.size() << endl;
+	cout << endl;
+
+	swap(s, s2);
+
+	cout << "Contents in Stack s after swap:" << endl;
+	s.display();
+	cout << "Top: " << s.top() << endl;
+	cout << "Size: " << s.size() << endl;
+	cout << endl;
+
+	cout << "Contents in Stack s2 after swap:" << endl;
+	s2.display();
+	cout << "Top: " << s2.top() << endl;
+	cout << "Size: " << s2.size() << endl;
 	cout << endl;
 
 	return 0;
