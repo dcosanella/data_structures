@@ -4,6 +4,7 @@
 #include "list.h"
 #include "vector.h"
 #include "stack.h"
+#include "queue.h"
 #include <iostream>
 
 using namespace std;
@@ -185,6 +186,7 @@ int main()
 	cout << endl;
 	*/
 
+	/*
 	// Tests for all functions in Stack class
 	Stack<int> s;
 	s.push(15);
@@ -216,7 +218,7 @@ int main()
 	cout << "Size: " << s2.size() << endl;
 	cout << endl;
 
-	swap(s, s2);
+	s.swap(s2);
 
 	cout << "Contents in Stack s after swap:" << endl;
 	s.display();
@@ -228,6 +230,105 @@ int main()
 	s2.display();
 	cout << "Top: " << s2.top() << endl;
 	cout << "Size: " << s2.size() << endl;
+	cout << endl;
+
+	s2.pop();
+	cout << "Contents in Stack s2:" << endl;
+	s2.display();
+	cout << "Top: " << s2.top() << endl;
+	cout << "Size: " << s2.size() << endl;
+	cout << endl;
+	*/
+
+	
+	// Tests for all functions in Queue class
+	Queue<int> q;
+	q.push(10);
+	q.push(20);
+	q.push(30);
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	q.pop();
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	q.pop();
+	q.pop();
+	q.pop();
+	cout << endl;
+
+	q.push(36);
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	q.push(45);
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	q.pop();
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	q.push(14);
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	q.push(4);
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	Queue<int> q2;
+	q2.push(5);
+	q2.push(15);
+	cout << "Queue q2:" << endl;
+	q2.display();
+	cout << "Size: " << q2.size() << endl;
+	cout << "Front: " << q2.front() << endl;
+	cout << "Back: " << q2.back() << endl;
+	cout << endl;
+
+	q.swap(q2);
+	cout << "Queue q after swap: " << endl;
+	q.display();
+	cout << "Size: " << q.size() << endl;
+	cout << "Front: " << q.front() << endl;
+	cout << "Back: " << q.back() << endl;
+	cout << endl;
+
+	cout << "Queue q2 after swap: " << endl;
+	q2.display();
+	cout << "Size: " << q2.size() << endl;
+	cout << "Front: " << q2.front() << endl;
+	cout << "Back: " << q2.back() << endl;
+	cout << endl;
+
+	q2.pop();
+	q2.display();
+	cout << "Size: " << q2.size() << endl;
+	cout << "Front: " << q2.front() << endl;
+	cout << "Back: " << q2.back() << endl;
 	cout << endl;
 
 	return 0;

@@ -9,10 +9,10 @@ template <class T>
 class Stack
 {
 	public:
-		Stack();
+		Stack(void);
 		void push(const T& data);
 		void pop(void);
-		void swap(const Stack<T>& stack_a, const Stack<T>& stack_b);
+		void swap(Stack<T>& stack);
 		int size(void);
 		bool empty(void);
 		T& top(void);
@@ -26,15 +26,15 @@ class Stack
 		};
 
 		unsigned int m_size;
-		Node* stack_ptr;
+		Node* m_stack_ptr;
 		
 };
 
 template <class T>
-Stack<T>::Stack()
+Stack<T>::Stack(void)
 {
 	m_size = 0;
-	stack_ptr = nullptr;
+	m_stack_ptr = nullptr;
 }
 
 template <class T>
@@ -50,10 +50,10 @@ void Stack<T>::push(const T& data)
 	}
 	else
 	{
-		newNode->next = stack_ptr;
+		newNode->next = m_stack_ptr;
 	}
 
-	stack_ptr = newNode;
+	m_stack_ptr = newNode;
 	m_size++;
 }
 
@@ -63,19 +63,23 @@ void Stack<T>::pop(void)
 	cout << "pop" << endl;
 	if (m_size > 0)
 	{
-		Node* temp = stack_ptr;
-		stack_ptr = temp->next;
+		Node* temp = m_stack_ptr;
+		m_stack_ptr = temp->next;
 		delete temp;
 		m_size--;
 	}
 }
 
 template <class T>
-void Stack<T>::swap(const Stack<T>& stack_a, const Stack<T>& stack_b)
+void Stack<T>::swap(Stack<T>& stack)
 {
-	Node* temp = stack_a;
-	stack_b = temp;
-	stack_a = stack_b;
+	Node* temp = m_stack_ptr;
+	m_stack_ptr = stack.m_stack_ptr;
+	stack.m_stack_ptr = temp;
+
+	int temp_size = m_size;
+	m_size = stack.m_size;
+	stack.m_size = temp_size;
 }
 
 template <class T>
@@ -97,14 +101,14 @@ bool Stack<T>::empty(void)
 template <class T>
 T& Stack<T>::top(void)
 {
-	return stack_ptr->data;
+	return m_stack_ptr->data;
 }
 
 template <class T>
 void Stack<T>::display(void)
 {
 	Node* temp = new Node;
-	temp = stack_ptr;
+	temp = m_stack_ptr;
 
 	while (temp)
 	{

@@ -9,7 +9,7 @@ template <class T>
 class List
 {
 public:
-	List();										// constructor
+	List(void);										// constructor
 	void push_front(const T& data);				// add node to end of list
 	void push_back(const T& data);				// add node to end of list
 	void insert_node(const T& data, int pos);	// insert node at certain position
@@ -34,7 +34,7 @@ private:
 };
 
 template <class T>
-List<T>::List()
+List<T>::List(void)
 {
     m_head = nullptr;
 }
